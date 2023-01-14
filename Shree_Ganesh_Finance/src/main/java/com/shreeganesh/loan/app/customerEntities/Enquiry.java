@@ -1,7 +1,10 @@
 package com.shreeganesh.loan.app.customerEntities;
 
+
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -15,6 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Enquiry {
 	@Id
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	private Integer enquiryId;
 	private String enquiryFirstName;
 	private String enquiryMiddleName;
