@@ -2,6 +2,6 @@ package com.shreeganesh.loan.app.customerEnum;
 
 public enum CustomerStatus {
 	
-	CibilOK,CibilNotOK
+	CibilOK,CibilNotOK,DocumentsSubmitted,DocumentVerificationOk,DocumentRejected
 
 }

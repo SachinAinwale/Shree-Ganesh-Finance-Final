@@ -9,7 +9,7 @@ public class Cibil {
 	public Integer cibilCheck(String pan) {
 		Random r=new Random();
 		
-		Integer i=r.nextInt(500,900);
+		Integer i=r.nextInt(690,900);
 		
 		return i;
 	}
