@@ -19,6 +19,7 @@ import com.shreeganesh.loan.app.customerServiceInterfaces.EnquiryService;
 @RestController
 @RequestMapping("/enquiry")
 public class EnquiryController {
+
 	
 	@Autowired
 	EnquiryService enquiryService;
@@ -46,5 +47,9 @@ public class EnquiryController {
 		
 		return new ResponseEntity<List<Enquiry>>(cibilOkEnquiries,HttpStatus.OK);
 	}
+
+
+
+
 	
 }

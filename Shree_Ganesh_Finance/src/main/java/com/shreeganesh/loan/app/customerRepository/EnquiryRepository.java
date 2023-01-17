@@ -9,6 +9,9 @@ import com.shreeganesh.loan.app.customerEntities.Enquiry;
 
 @Repository
 public interface EnquiryRepository extends JpaRepository<Enquiry, Integer>{
+
+
+
 	public List<Enquiry> findAllByEnquiryStatus(String valueOf);
 
 }

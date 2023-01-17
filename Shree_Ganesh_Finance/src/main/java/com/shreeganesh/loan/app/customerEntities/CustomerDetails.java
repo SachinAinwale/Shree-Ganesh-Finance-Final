@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDetails {
-
 	@Id
 	private Integer customerId;
 	private String customerFirstName;

@@ -5,7 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shreeganesh.loan.app.customerEntities.CustomerDetails;
 import com.shreeganesh.loan.app.customerEntities.Enquiry;
+
+
 
 @SpringBootApplication
 public class ShreeGaneshFinanceApplication {
@@ -16,7 +19,7 @@ public class ShreeGaneshFinanceApplication {
 		
 		ObjectMapper mapper=new ObjectMapper();
 		try {
-			System.out.println(mapper.writeValueAsString(new Enquiry()));
+			System.out.println(mapper.writeValueAsString(new CustomerDetails()));
 		} catch (JsonProcessingException e) {
 			
 			e.printStackTrace();
