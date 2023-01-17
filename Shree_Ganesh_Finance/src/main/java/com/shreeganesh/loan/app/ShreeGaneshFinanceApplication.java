@@ -5,25 +5,32 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.shreeganesh.loan.app.customerEntities.AllDocuments;
+import com.shreeganesh.loan.app.customerEntities.CustomerAddress;
+import com.shreeganesh.loan.app.customerEntities.CustomerBankDetails;
 import com.shreeganesh.loan.app.customerEntities.CustomerDetails;
+import com.shreeganesh.loan.app.customerEntities.CustomerProfession;
+import com.shreeganesh.loan.app.customerEntities.CustomerVehicleInformation;
+import com.shreeganesh.loan.app.customerEntities.Dealer;
 import com.shreeganesh.loan.app.customerEntities.Enquiry;
+import com.shreeganesh.loan.app.customerEntities.LocalAddress;
+import com.shreeganesh.loan.app.customerEntities.PermanentAddress;
 
 @SpringBootApplication
 public class ShreeGaneshFinanceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ShreeGaneshFinanceApplication.class, args);
-		System.out.println("Jai GAnesh");
-		
-		ObjectMapper mapper=new ObjectMapper();
-		try {
-			System.out.println(mapper.writeValueAsString(new CustomerDetails()));
-		} catch (JsonProcessingException e) {
-			
-			e.printStackTrace();
-		}
-		System.out.println("Gitbash");
-		System.out.println("Ashutosh");
+//		System.out.println("Jai GAnesh");
+//
+//		ObjectMapper mapper = new ObjectMapper();
+//		try {
+//			System.out.println(mapper.writeValueAsString(new CustomerProfession()));
+//
+//		} catch (JsonProcessingException e) {
+//
+//			e.printStackTrace();
+//		}
 	}
 
 }
