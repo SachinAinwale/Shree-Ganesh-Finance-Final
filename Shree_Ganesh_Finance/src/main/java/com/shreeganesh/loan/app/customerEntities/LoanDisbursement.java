@@ -1,10 +1,14 @@
 package com.shreeganesh.loan.app.customerEntities;
 
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+
+import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class LoanDisbursement {
 
 	@Id
@@ -26,5 +31,5 @@ public class LoanDisbursement {
 	 private Double transferAmount;
 	// @Enumerated
 	 private String paymentStatus;
-	 private String amountPaidDate;
+	 private Date amountPaidDate;
 }

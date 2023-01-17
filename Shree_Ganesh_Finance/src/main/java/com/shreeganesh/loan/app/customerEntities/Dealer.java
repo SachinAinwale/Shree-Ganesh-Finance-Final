@@ -19,6 +19,7 @@ public class Dealer {
 private Integer	dealerId;
 private String	dealerName;
 private String	dealerAddress;
+private String  dealerEmail;
 @OneToOne(cascade = CascadeType.ALL)
 private DealerBankDetails dealerBankDetails;
 
