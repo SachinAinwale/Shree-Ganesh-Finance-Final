@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+@AllArgsConstructor					
 @NoArgsConstructor
 public class CustomerProfession {
 	
@@ -21,7 +21,8 @@ public class CustomerProfession {
 		@GeneratedValue(strategy = GenerationType.AUTO)
      private Integer professionId;
 	 private String professionType;
-	 private Double DouprofessionMonthlyIncome;
+	 private Double professionMonthlyIncome;
 	 private String professionDesignation;
+	 
 
 }

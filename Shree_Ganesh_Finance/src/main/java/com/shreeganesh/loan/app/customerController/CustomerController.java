@@ -40,6 +40,7 @@ public class CustomerController {
 
 		ObjectMapper om = new ObjectMapper();
 		try {
+			
 			CustomerDetails details = om.readValue(customerDetails, CustomerDetails.class);
 
 			AllDocuments allDocuments = new AllDocuments();

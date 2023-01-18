@@ -19,18 +19,19 @@ import com.shreeganesh.loan.app.customerEntities.PermanentAddress;
 @SpringBootApplication
 public class ShreeGaneshFinanceApplication {
 
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ShreeGaneshFinanceApplication.class, args);
-//		System.out.println("Jai GAnesh");
-//
-//		ObjectMapper mapper = new ObjectMapper();
-//		try {
-//			System.out.println(mapper.writeValueAsString(new CustomerProfession()));
-//
-//		} catch (JsonProcessingException e) {
-//
-//			e.printStackTrace();
-//		}
+		System.out.println("Jai GAnesh");
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			System.out.println(mapper.writeValueAsString(new CustomerDetails()));
+
+		} catch (JsonProcessingException e) {
+
+			e.printStackTrace();
+		}
 	}
 
 }
