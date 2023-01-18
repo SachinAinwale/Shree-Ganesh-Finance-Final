@@ -1,6 +1,7 @@
 package com.shreeganesh.loan.app.customerController;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMessage;
@@ -80,6 +81,12 @@ public class CustomerController {
 		List<CustomerDetails> allCustomerDetails = customerService.getAllCustomerDetails();
 		
 		return new ResponseEntity<List<CustomerDetails>>(allCustomerDetails, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getSingleCustomerId/customerId")
+	public ResponseEntity<CustomerDetails> getSingleData(@PathVariable CustomerDetails customerId)
+	{
+		return null;
 	}
 
 }
