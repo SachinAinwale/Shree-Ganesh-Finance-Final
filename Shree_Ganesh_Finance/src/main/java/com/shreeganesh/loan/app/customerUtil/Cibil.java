@@ -10,11 +10,10 @@ public class Cibil {
 		Random r=new Random();
 		
 
+
 		Integer i=r.nextInt(700,900);
 
 
-
-		
 		return i;
 	}
 
