@@ -12,4 +12,6 @@ public interface CustomerRepository extends JpaRepository<CustomerDetails, Integ
 {
 	public List<CustomerDetails> findAllByCustomerStatus(String valueOf);
 
+	public List<CustomerDetails> findAllByCustomerStatus(String valueOf);
+
 }

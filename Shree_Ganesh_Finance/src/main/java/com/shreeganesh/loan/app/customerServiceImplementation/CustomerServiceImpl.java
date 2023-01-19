@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerDetails> getAllCustomerDetails() {
-		return customerRepository.findAll();
+		return customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentsSubmitted));
 	}
 
 	@Override
@@ -65,7 +65,15 @@ public class CustomerServiceImpl implements CustomerService {
 		if (findById.isPresent()) {
 			CustomerDetails customerDetails = findById.get();
 			customerDetails.setCustomerStatus(customerStatus);
+			
+			Optional<Enquiry> optional = enquiryRepository.findById(customerId);
+			if (optional.isPresent()) {
+				Enquiry enquiry = optional.get();
+				enquiry.setEnquiryStatus(customerStatus);
+				enquiryRepository.save(enquiry);
 
+			}
+			
 			return customerRepository.save(customerDetails);
 
 		}
