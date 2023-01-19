@@ -25,7 +25,6 @@ public class LoanDisbursementController {
 	public ResponseEntity<LoanDisbursement> insertData(@RequestBody CustomerDetails customer) {
 
 		LoanDisbursement data = loandisbursementService.insertData(customer);
-		// return new ResponseEntity<Enquiry>(enquiry, HttpStatus.CREATED);
 		return new ResponseEntity<LoanDisbursement>(data, HttpStatus.CREATED);
 	}
 }

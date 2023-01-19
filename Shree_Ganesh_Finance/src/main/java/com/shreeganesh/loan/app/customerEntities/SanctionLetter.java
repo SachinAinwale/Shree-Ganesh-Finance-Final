@@ -26,13 +26,13 @@ public class SanctionLetter {
 	private Integer sanctionId;
 	private Date sanctionDate;
 	private String applicantName;
-	private String contactDetails;
+	private Long contactDetails;
 	private Double loanAmountSanctioned;
 	private Double rateOfInterest;
 	private Integer loanTenure;
 	private Double monthlyEmiAmount;
 	private String termsCondition;
-	private String totalLoanAmountWithInterest;
+	private Double totalLoanAmountWithInterest;
 	// @Enumerated
 	private String sactionStatus;
 	private byte[] sactionLetter;
