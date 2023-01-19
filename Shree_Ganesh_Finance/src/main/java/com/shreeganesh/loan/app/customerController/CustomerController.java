@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMessage;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,7 +37,7 @@ public class CustomerController {
 			@RequestPart("thumb") MultipartFile thumb, @RequestPart("bankPassbook") MultipartFile bankPassbook,
 			@RequestPart("drivingLicense") MultipartFile drivingLicense,
 			@RequestPart("addharCard") MultipartFile addharCard) {
-
+ 
 		ObjectMapper om = new ObjectMapper();
 		try {
 
@@ -83,8 +81,9 @@ public class CustomerController {
 		List<CustomerDetails> allCustomerDetails = customerService.getAllCustomerDetails();
 
 		return new ResponseEntity<List<CustomerDetails>>(allCustomerDetails, HttpStatus.OK);
+	
 	}
-
+	
 	@PutMapping("/customerApplicationStatus/{customerId}/{customerStatus}")
 	public ResponseEntity<CustomerDetails> changeCustomerApplicationFormStatus(
 			@PathVariable("customerId") Integer customerId, @PathVariable("customerStatus") String customerStatus) {
@@ -99,7 +98,6 @@ public class CustomerController {
 		}
 
 	}
-	
 	
 
 }

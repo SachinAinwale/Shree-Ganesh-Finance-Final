@@ -16,6 +16,9 @@ import com.shreeganesh.loan.app.customerEntities.DealerBankDetails;
 import com.shreeganesh.loan.app.customerEntities.Enquiry;
 import com.shreeganesh.loan.app.customerEntities.LocalAddress;
 import com.shreeganesh.loan.app.customerEntities.PermanentAddress;
+import com.shreeganesh.loan.app.customerEntities.SanctionLetter;
+
+
 
 @SpringBootApplication
 public class ShreeGaneshFinanceApplication {
@@ -28,7 +31,7 @@ public class ShreeGaneshFinanceApplication {
 		ObjectMapper mapper = new ObjectMapper();
 		
 		try {
-			System.out.println(mapper.writeValueAsString(new DealerBankDetails()));
+			System.out.println(mapper.writeValueAsString(new SanctionLetter()));
 
 		} catch (JsonProcessingException e) {
 

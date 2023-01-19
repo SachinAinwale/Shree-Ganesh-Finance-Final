@@ -23,7 +23,8 @@ public class CustomerDetails {
 	private String	customerMiddleName;
 	private String customerLastName;
 	private Long customerMobileNumber;
-	private Double loanAmtSanction;
+	//private Double loanAmtSanction;
+	private Integer customerLoanTenureInMonth;
     private Long customerAdditionalMobileNumber;
 	private String customerPanCard;
 	private Long customerAdhaarCard;

@@ -31,7 +31,7 @@ public class SanctionLetter {
 	private Integer loanTenure;
 	private Double monthlyEmiAmount;
 	private String termsCondition;
-	private String totalLoanAmountWithInterest;
+	private Double totalLoanAmountWithInterest;
 	// @Enumerated
 	private String sactionStatus;
 	private byte[] sactionLetter;
