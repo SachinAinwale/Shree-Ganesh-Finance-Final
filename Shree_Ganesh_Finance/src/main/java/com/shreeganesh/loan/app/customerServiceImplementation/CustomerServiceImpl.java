@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public CustomerDetails changeCustomerFormStatus(Integer customerId, String customerStatus) {
-		Optional<CustomerDetails> findById = customerRepository.findById(customerId);
+		Optional<CustomerDetails> findById = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentsSubmitted));
 
 		if (findById.isPresent()) {
 			CustomerDetails customerDetails = findById.get();

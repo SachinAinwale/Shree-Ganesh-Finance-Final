@@ -87,7 +87,8 @@ public class CustomerController {
 	@PutMapping("/customerApplicationStatus/{customerId}/{customerStatus}")
 	public ResponseEntity<CustomerDetails> changeCustomerApplicationFormStatus(
 			@PathVariable("customerId") Integer customerId, @PathVariable("customerStatus") String customerStatus) {
-
+           System.out.println("********************************");
+		System.out.println(customerId+ " "+ customerStatus);
 		CustomerDetails customerDetails = customerService.changeCustomerFormStatus(customerId, customerStatus);
 
 		if (customerDetails != null) {
