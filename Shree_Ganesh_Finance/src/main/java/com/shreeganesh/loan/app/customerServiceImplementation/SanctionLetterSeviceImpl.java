@@ -3,6 +3,7 @@ package com.shreeganesh.loan.app.customerServiceImplementation;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -192,6 +193,16 @@ String content2 = "\n\nWe hope that you find the terms and conditions of this lo
 
 		custrepo.save(customerDetails);
 
+	}
+
+
+	@Override
+	public 	List<CustomerDetails> getAllGenratedSanction() {
+		
+		List<CustomerDetails> list=sanrepo.findAllByCustomerStatus(String.valueOf(CustomerStatus.SanctionLetterGenreted));
+		
+		return list;
+		
 	}
 
 }
