@@ -17,15 +17,15 @@ import com.shreeganesh.loan.app.customerServiceInterfaces.LoanDisbursementServic
 @RestController
 @RequestMapping("/loandisbursement")
 public class LoanDisbursementController {
-	
+
 	@Autowired
 	LoanDisbursementService loandisbursementService;
 
 	@PostMapping("/insert")
 	public ResponseEntity<LoanDisbursement> insertData(@RequestBody CustomerDetails customer) {
-		
+
 		LoanDisbursement data = loandisbursementService.insertData(customer);
-		//return new ResponseEntity<Enquiry>(enquiry, HttpStatus.CREATED);
-		 return new ResponseEntity<LoanDisbursement>(data, HttpStatus.CREATED);
+		// return new ResponseEntity<Enquiry>(enquiry, HttpStatus.CREATED);
+		return new ResponseEntity<LoanDisbursement>(data, HttpStatus.CREATED);
 	}
 }

@@ -1,6 +1,7 @@
 package com.shreeganesh.loan.app.customerController;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMessage;
@@ -37,9 +38,10 @@ public class CustomerController {
 			@RequestPart("thumb") MultipartFile thumb, @RequestPart("bankPassbook") MultipartFile bankPassbook,
 			@RequestPart("drivingLicense") MultipartFile drivingLicense,
 			@RequestPart("addharCard") MultipartFile addharCard) {
-
+ 
 		ObjectMapper om = new ObjectMapper();
 		try {
+			
 			CustomerDetails details = om.readValue(customerDetails, CustomerDetails.class);
 
 			AllDocuments allDocuments = new AllDocuments();
@@ -82,6 +84,6 @@ public class CustomerController {
 		return new ResponseEntity<List<CustomerDetails>>(allCustomerDetails, HttpStatus.OK);
 	}
 	
-
+	
 
 }
