@@ -55,12 +55,12 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerDetails> getAllCustomerDetails() {
-		return customerRepository.findAll();
+		return customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentsSubmitted));
 	}
 
 	@Override
 	public CustomerDetails changeCustomerFormStatus(Integer customerId, String customerStatus) {
-		Optional<CustomerDetails> findById = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentsSubmitted));
+		Optional<CustomerDetails> findById = customerRepository.findById(customerId);
 
 		if (findById.isPresent()) {
 			CustomerDetails customerDetails = findById.get();
