@@ -1,6 +1,9 @@
+
 package com.shreeganesh.loan.app.customerEntities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -13,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class PermanentAddress {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer permanentAddressId;
 	private String areaname;
 	private String cityname;
@@ -23,3 +27,4 @@ public class PermanentAddress {
 	private String streetName;
 
 }
+

@@ -1,3 +1,4 @@
+
 package com.shreeganesh.loan.app.customerEntities;
 
 
@@ -35,3 +36,4 @@ public class Enquiry {
 	private String enquiryStatus;
 
 }
+

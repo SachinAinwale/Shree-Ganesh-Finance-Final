@@ -1,10 +1,15 @@
+
 package com.shreeganesh.loan.app.customerEntities;
 
-
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.stereotype.Component;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,10 +19,12 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class SanctionLetter {
-     @Id
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer sanctionId;
-	private String sanctionDate;
+	private Date sanctionDate;
 	private String applicantName;
 	private String contactDetails;
 	private Double loanAmountSanctioned;
@@ -25,7 +32,9 @@ public class SanctionLetter {
 	private Integer loanTenure;
 	private Double monthlyEmiAmount;
 	private String termsCondition;
-	//@Enumerated
+	private String totalLoanAmountWithInterest;
+	// @Enumerated
 	private String sactionStatus;
 	private byte[] sactionLetter;
 }
+
