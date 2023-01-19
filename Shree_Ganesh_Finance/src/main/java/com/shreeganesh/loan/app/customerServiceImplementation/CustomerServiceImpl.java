@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	@Override
 	public List<CustomerDetails> getAllCustomerDetails() {
-		return customerRepository.findAll();
+		return customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentsSubmitted));
 	}
 
 	@Override
