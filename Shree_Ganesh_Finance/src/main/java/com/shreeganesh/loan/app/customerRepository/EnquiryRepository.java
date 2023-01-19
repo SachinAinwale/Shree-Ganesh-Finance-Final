@@ -1,3 +1,4 @@
+
 package com.shreeganesh.loan.app.customerRepository;
 
 import java.util.List;
@@ -13,3 +14,4 @@ public interface EnquiryRepository extends JpaRepository<Enquiry, Integer>{
 	public List<Enquiry> findAllByEnquiryStatus(String valueOf);
 
 }
+
