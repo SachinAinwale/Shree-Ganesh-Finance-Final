@@ -12,6 +12,7 @@ import com.shreeganesh.loan.app.customerEntities.CustomerDetails;
 import com.shreeganesh.loan.app.customerEntities.CustomerProfession;
 import com.shreeganesh.loan.app.customerEntities.CustomerVehicleInformation;
 import com.shreeganesh.loan.app.customerEntities.Dealer;
+import com.shreeganesh.loan.app.customerEntities.DealerBankDetails;
 import com.shreeganesh.loan.app.customerEntities.Enquiry;
 import com.shreeganesh.loan.app.customerEntities.LocalAddress;
 import com.shreeganesh.loan.app.customerEntities.PermanentAddress;
@@ -25,8 +26,9 @@ public class ShreeGaneshFinanceApplication {
 		System.out.println("Jai GAnesh");
 
 		ObjectMapper mapper = new ObjectMapper();
+		
 		try {
-			System.out.println(mapper.writeValueAsString(new CustomerDetails()));
+			System.out.println(mapper.writeValueAsString(new DealerBankDetails()));
 
 		} catch (JsonProcessingException e) {
 

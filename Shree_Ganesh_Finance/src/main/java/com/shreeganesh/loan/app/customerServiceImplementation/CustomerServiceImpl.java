@@ -58,4 +58,19 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.findAll();
 	}
 
+	@Override
+	public CustomerDetails changeCustomerFormStatus(Integer customerId, String customerStatus) {
+		Optional<CustomerDetails> findById = customerRepository.findById(customerId);
+
+		if (findById.isPresent()) {
+			CustomerDetails customerDetails = findById.get();
+			customerDetails.setCustomerStatus(customerStatus);
+
+			return customerRepository.save(customerDetails);
+
+		}
+		return null;
+
+	}
+
 }
