@@ -4,14 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMessage;
-import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +24,8 @@ import com.shreeganesh.loan.app.customerServiceInterfaces.CustomerService;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/customer")
-public class CustomerController {
+public class CustomerController 
+{
 
 	@Autowired
 	CustomerService customerService;
@@ -37,10 +37,11 @@ public class CustomerController {
 			@RequestPart("incomeProof") MultipartFile incomeProof, @RequestPart("signature") MultipartFile signature,
 			@RequestPart("thumb") MultipartFile thumb, @RequestPart("bankPassbook") MultipartFile bankPassbook,
 			@RequestPart("drivingLicense") MultipartFile drivingLicense,
-			@RequestPart("addharCard") MultipartFile addharCard) {
-
+			@RequestPart("addharCard") MultipartFile addharCard)
+	{ 
 		ObjectMapper om = new ObjectMapper();
 		try {
+
 			CustomerDetails details = om.readValue(customerDetails, CustomerDetails.class);
 
 			AllDocuments allDocuments = new AllDocuments();
@@ -56,7 +57,7 @@ public class CustomerController {
 			allDocuments.setAddharCard(addharCard.getBytes());
 
 			details.setCustomerAllDocuments(allDocuments);
-			
+
 			CustomerDetails fillLoanApplicationForm = customerService.fillLoanApplicationForm(details);
 			return new ResponseEntity<CustomerDetails>(fillLoanApplicationForm, HttpStatus.OK);
 		} catch (Exception e) {
@@ -76,13 +77,44 @@ public class CustomerController {
 //	}
 
 	@GetMapping("/getAllCustomerFormData")
-	public ResponseEntity<List<CustomerDetails>> getAllCustomerFormData() {
-		
+	public ResponseEntity<List<CustomerDetails>> getAllCustomerFormData()
+	{
 		List<CustomerDetails> allCustomerDetails = customerService.getAllCustomerDetails();
-		
+
 		return new ResponseEntity<List<CustomerDetails>>(allCustomerDetails, HttpStatus.OK);
+	
 	}
 	
+	@PutMapping("/customerApplicationStatus/{customerId}/{customerStatus}")
+	public ResponseEntity<CustomerDetails> changeCustomerApplicationFormStatus(
+			@PathVariable("customerId") Integer customerId, @PathVariable("customerStatus") String customerStatus) 
+	{
+		CustomerDetails customerDetails = customerService.changeCustomerFormStatus(customerId, customerStatus);
 
+		if (customerDetails != null) {
+			return new ResponseEntity<CustomerDetails>(customerDetails, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<CustomerDetails>(HttpStatus.NO_CONTENT);
+
+		}
+	}
+	//to get all Document Verified Customer....
+	@GetMapping("/getAllDocVerifiedCustomer")
+	public ResponseEntity<List<CustomerDetails>> getAllDocVerifiedCustomer()
+	{
+		List<CustomerDetails> verifiedCustomer = customerService.getAllDocVerifiedCustomer();
+		
+		return new ResponseEntity<List<CustomerDetails>>(verifiedCustomer, HttpStatus.OK);
+	}
+	
+	//to get all Document Rejected Customer....
+	@GetMapping("/getAllDocRejectedCustomer")
+	public ResponseEntity<List<CustomerDetails>> getAllDocRejectedCustomer()
+	{
+		List<CustomerDetails> rejectedCustomer = customerService.getAllDocRejectedCustomer();
+		
+		return new ResponseEntity<List<CustomerDetails>>(rejectedCustomer, HttpStatus.OK);
+	}
 
 }
+

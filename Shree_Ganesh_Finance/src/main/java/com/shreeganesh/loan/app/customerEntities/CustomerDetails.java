@@ -1,3 +1,4 @@
+
 package com.shreeganesh.loan.app.customerEntities;
 
 import java.util.List;
@@ -17,14 +18,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerDetails {
-
 	@Id
 	private Integer customerId;
 	private String customerFirstName;
 	private String	customerMiddleName;
 	private String customerLastName;
-	private Double loanAmtSanction;
 	private Long customerMobileNumber;
+	//private Double loanAmtSanction;
+	private Integer customerLoanTenureInMonth;
     private Long customerAdditionalMobileNumber;
 	private String customerPanCard;
 	private Long customerAdhaarCard;

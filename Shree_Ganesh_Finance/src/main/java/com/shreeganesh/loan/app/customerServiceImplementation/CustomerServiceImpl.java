@@ -58,4 +58,35 @@ public class CustomerServiceImpl implements CustomerService {
 		return customerRepository.findAll();
 	}
 
+	@Override
+	public CustomerDetails changeCustomerFormStatus(Integer customerId, String customerStatus) {
+		Optional<CustomerDetails> findById = customerRepository.findById(customerId);
+
+		if (findById.isPresent()) {
+			CustomerDetails customerDetails = findById.get();
+			customerDetails.setCustomerStatus(customerStatus);
+
+			return customerRepository.save(customerDetails);
+
+		}
+		return null;
+
+	}
+
+	@Override
+	public List<CustomerDetails> getAllDocVerifiedCustomer() 
+	{
+		List<CustomerDetails> verifedCustomer = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentVerificationOk));
+		
+		return verifedCustomer;
+	}
+
+	@Override
+	public List<CustomerDetails> getAllDocRejectedCustomer() 
+	{
+		List<CustomerDetails> rejectedCustomer = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentRejected));
+		
+		return rejectedCustomer;
+	}
+
 }

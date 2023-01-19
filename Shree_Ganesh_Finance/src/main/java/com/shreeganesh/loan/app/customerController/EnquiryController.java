@@ -1,3 +1,4 @@
+
 package com.shreeganesh.loan.app.customerController;
 
 import java.util.List;
@@ -20,14 +21,19 @@ import com.shreeganesh.loan.app.customerServiceInterfaces.EnquiryService;
 @RequestMapping("/enquiry")
 public class EnquiryController {
 
+	
 	@Autowired
 	EnquiryService enquiryService;
-
+	
 	@PostMapping("/insert")
-	public ResponseEntity<Enquiry> insertData(@RequestBody Enquiry enq) {
-		Enquiry enquiry = enquiryService.insertData(enq);
-		return new ResponseEntity<Enquiry>(enquiry, HttpStatus.CREATED);
+	public ResponseEntity<Enquiry> insertData(@RequestBody Enquiry enq){
+		
+		Enquiry enquiry=enquiryService.insertData(enq);
+		
+		return new ResponseEntity<Enquiry>(enquiry,HttpStatus.CREATED);
 	}
+	
+
 
 	@GetMapping("/getAllEnquiries")
 	public ResponseEntity<List<Enquiry>> getAllEnquiries(){
@@ -37,10 +43,14 @@ public class EnquiryController {
 	
 	@GetMapping("/getEligibleEnquiries")
 	public  ResponseEntity<List<Enquiry>> getEligibleEnquiries(){
+		
 		List<Enquiry> cibilOkEnquiries = enquiryService.getCibilOkEnquiries();
+		
 		return new ResponseEntity<List<Enquiry>>(cibilOkEnquiries,HttpStatus.OK);
 	}
-	
+
+
+
+
 	
 }
-

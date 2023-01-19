@@ -2,8 +2,8 @@ package com.shreeganesh.loan.app.customerRepository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.shreeganesh.loan.app.customerEntities.SanctionLetter;
+import com.shreeganesh.loan.app.customerEntities.CustomerDetails;
 
-public interface SanctionLetterRepository extends JpaRepository<SanctionLetter, Integer>{
+public interface SanctionLetterRepository extends JpaRepository<CustomerDetails, Integer>{
 
 }

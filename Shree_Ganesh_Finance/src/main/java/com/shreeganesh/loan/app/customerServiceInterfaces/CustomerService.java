@@ -12,4 +12,10 @@ public interface CustomerService {
 
 	public List<CustomerDetails> getAllCustomerDetails();
 
+	public CustomerDetails changeCustomerFormStatus(Integer customerId, String customerStatus);
+
+	public List<CustomerDetails> getAllDocVerifiedCustomer();
+
+	public List<CustomerDetails> getAllDocRejectedCustomer();
+
 }

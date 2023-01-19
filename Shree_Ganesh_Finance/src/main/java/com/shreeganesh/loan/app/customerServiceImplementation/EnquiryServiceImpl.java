@@ -4,6 +4,16 @@ package com.shreeganesh.loan.app.customerServiceImplementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Service;
+
+import com.shreeganesh.loan.app.customerEntities.Enquiry;
+import com.shreeganesh.loan.app.customerEnum.CustomerStatus;
+import com.shreeganesh.loan.app.customerRepository.EnquiryRepository;
+import com.shreeganesh.loan.app.customerServiceInterfaces.EnquiryService;
+import com.shreeganesh.loan.app.customerUtil.Cibil;
+
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -88,6 +98,7 @@ public class EnquiryServiceImpl implements EnquiryService {
 	@Override
 	public List<Enquiry> getCibilOkEnquiries() {
 		return enquiryRepository.findAllByEnquiryStatus(String.valueOf(CustomerStatus.CibilOK));
+
 
 	}
 
