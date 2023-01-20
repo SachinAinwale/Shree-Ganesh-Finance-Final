@@ -13,5 +13,5 @@ public interface SanctionLetterService {
 
 	public List<CustomerDetails> getAllGenratedSanction();
 
-
+	public List<CustomerDetails> getCustomersBySanctionLetterApproved();
 }

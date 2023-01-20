@@ -36,5 +36,16 @@ public class SanctionLetterController {
 
 		return new ResponseEntity<List<CustomerDetails>>(genratedSanction, HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/getAllSanctionLetterApprovedCustomers")
+	public  ResponseEntity<List<CustomerDetails>> getAllSanctionLetterApprovedCustomers()
+	{
+		
+		List<CustomerDetails> customers = sls.getCustomersBySanctionLetterApproved();
+		
+		return new ResponseEntity<List<CustomerDetails>>(customers, HttpStatus.OK);
+		
+	}
 
 }

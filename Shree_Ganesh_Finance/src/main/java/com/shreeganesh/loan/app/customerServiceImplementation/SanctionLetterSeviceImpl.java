@@ -216,4 +216,11 @@ String content2 = "\n\nWe hope that you find the terms and conditions of this lo
 		
 	}
 
+
+	@Override
+	public List<CustomerDetails> getCustomersBySanctionLetterApproved() {
+		
+		return sanrepo.findAllByCustomerStatus(String.valueOf(CustomerStatus.SanctionLetterApproved));
+	}
+
 }
