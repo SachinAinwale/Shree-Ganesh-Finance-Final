@@ -29,7 +29,7 @@ public class SanctionLetterController {
 		return new ResponseEntity<CustomerDetails>(HttpStatus.CREATED);
 	}
 
-	@GetMapping("/getAllGenratedSanction")
+	@GetMapping("/getAllGenratedSanctionByCm")
 	public ResponseEntity<List<CustomerDetails>> getAllGenratedSanction() {
 
 		List<CustomerDetails> genratedSanction = sls.getAllGenratedSanction();
