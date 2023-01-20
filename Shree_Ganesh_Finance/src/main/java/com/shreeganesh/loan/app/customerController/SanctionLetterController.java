@@ -37,23 +37,20 @@ public class SanctionLetterController {
 
 		return new ResponseEntity<List<CustomerDetails>>(genratedSanction, HttpStatus.OK);
 	}
-	
-	
 
 	@GetMapping("/getAllSanctionLetterApprovedCustomers")
-	public  ResponseEntity<List<CustomerDetails>> getAllSanctionLetterApprovedCustomers()
-	{
-		
+	public ResponseEntity<List<CustomerDetails>> getAllSanctionLetterApprovedCustomers() {
+
 		List<CustomerDetails> customers = sls.getCustomersBySanctionLetterApproved();
-		
+
 		return new ResponseEntity<List<CustomerDetails>>(customers, HttpStatus.OK);
 	}
 
 	@PutMapping("/customerApplicationStatusSanctioned/{customerId}/{customerStatus}")
-	public ResponseEntity<CustomerDetails> changeCustomerApplicationStatusSanctioned(@PathVariable("customerId") Integer customerId, @PathVariable("customerStatus") String customerStatus)
-	{
-		
-		System.out.println(customerId+" "+customerStatus);
+	public ResponseEntity<CustomerDetails> changeCustomerApplicationStatusSanctioned(
+			@PathVariable("customerId") Integer customerId, @PathVariable("customerStatus") String customerStatus) {
+
+		System.out.println(customerId + " " + customerStatus);
 		CustomerDetails customerDetails = sls.changeCustomerFormStatusSanctioned(customerId, customerStatus);
 
 		if (customerDetails != null) {
@@ -62,6 +59,15 @@ public class SanctionLetterController {
 			return new ResponseEntity<CustomerDetails>(HttpStatus.NO_CONTENT);
 
 		}
+	}
+
+	@GetMapping("/getAllSanctionLetterSignByCustomer")
+	public ResponseEntity<List<CustomerDetails>> getAllSanctionLetterSignByCustomer() {
+
+		List<CustomerDetails> signByCustomer = sls.getAllSanctionLetterSignByCustomer();
+
+		return new ResponseEntity<List<CustomerDetails>>(signByCustomer, HttpStatus.OK);
+
 	}
 
 }

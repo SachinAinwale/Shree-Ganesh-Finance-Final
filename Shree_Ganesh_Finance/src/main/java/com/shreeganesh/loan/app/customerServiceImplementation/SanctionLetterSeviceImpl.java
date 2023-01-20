@@ -246,4 +246,13 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 		return sanrepo.findAllByCustomerStatus(String.valueOf(CustomerStatus.SanctionLetterApproved));
 	}
 
+	@Override
+	public List<CustomerDetails> getAllSanctionLetterSignByCustomer() {
+		
+		return sanrepo.findAllByCustomerStatus(String.valueOf(CustomerStatus.SanctionLetterSignByCustomer));
+		
+	}
+
+
+
 }
