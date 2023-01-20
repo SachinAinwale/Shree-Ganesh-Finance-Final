@@ -65,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
 		if (findById.isPresent()) {
 			CustomerDetails customerDetails = findById.get();
 			customerDetails.setCustomerStatus(customerStatus);
-			
+
 			Optional<Enquiry> optional = enquiryRepository.findById(customerId);
 			if (optional.isPresent()) {
 				Enquiry enquiry = optional.get();
@@ -73,7 +73,7 @@ public class CustomerServiceImpl implements CustomerService {
 				enquiryRepository.save(enquiry);
 
 			}
-			
+
 			return customerRepository.save(customerDetails);
 
 		}
@@ -82,19 +82,21 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	@Override
-	public List<CustomerDetails> getAllDocVerifiedCustomer() 
-	{
-		List<CustomerDetails> verifedCustomer = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentVerificationOk));
-		
+	public List<CustomerDetails> getAllDocVerifiedCustomer() {
+		List<CustomerDetails> verifedCustomer = customerRepository
+				.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentVerificationOk));
+
 		return verifedCustomer;
 	}
 
 	@Override
-	public List<CustomerDetails> getAllDocRejectedCustomer() 
-	{
-		List<CustomerDetails> rejectedCustomer = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentRejected));
-		
+	public List<CustomerDetails> getAllDocRejectedCustomer() {
+		List<CustomerDetails> rejectedCustomer = customerRepository
+				.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentRejected));
+
 		return rejectedCustomer;
 	}
+
+
 
 }

@@ -1,7 +1,6 @@
 package com.shreeganesh.loan.app.customerController;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -117,6 +116,9 @@ public class CustomerController
 		
 		return new ResponseEntity<List<CustomerDetails>>(rejectedCustomer, HttpStatus.OK);
 	}
+	
+	
+	
 
 }
 
