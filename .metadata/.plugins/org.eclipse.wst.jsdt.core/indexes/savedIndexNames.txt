@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 INDEX VERSION 1.4+C:\Users\LENOVO\Desktop\backend 19-1-23 final\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+=======
+INDEX VERSION 1.4+C:\Users\Arkan\Desktop\updated backend 20\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+>>>>>>> branch 'master' of https://github.com/SachinAinwale/Shree-Ganesh-Finance-Final.git
 4270149285.index
+<<<<<<< HEAD
 3020246195.index
 223068913.index
 125929654.index
 1843428239.index
 940182067.index
+=======
+>>>>>>> branch 'master' of https://github.com/SachinAinwale/Shree-Ganesh-Finance-Final.git

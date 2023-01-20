@@ -18,4 +18,5 @@ public interface CustomerService {
 
 	public List<CustomerDetails> getAllDocRejectedCustomer();
 
+
 }

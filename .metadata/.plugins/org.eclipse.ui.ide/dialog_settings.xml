@@ -42,6 +42,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\Arkan\Desktop\updated backend 20\Shree_Ganesh_Finance"/>
 			<item value="C:\Users\Arkan\Desktop\new backend\Shree_Ganesh_Finance"/>
 		</list>
 	</section>

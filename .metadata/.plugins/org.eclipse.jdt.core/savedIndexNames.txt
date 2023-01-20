@@ -54,7 +54,6 @@ INDEX VERSION 1.131+C:\Users\LENOVO\Desktop\backend 19-1-23 final\.metadata\.plu
 4128071803.index
 3244320620.index
 1160880716.index
-4270149285.index
 3817640975.index
 117432863.index
 4070731217.index
