@@ -21,6 +21,7 @@ public class CustomerVehicleInformation {
 	private String customerVehicleChasisNo;
 	private String customerVehicleNo;
 	private String customerVehicleRcNo;
+	private Double customerVehiclePrice;
 
 }
 

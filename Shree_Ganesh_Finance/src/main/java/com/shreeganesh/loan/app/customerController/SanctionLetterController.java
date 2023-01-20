@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +30,28 @@ public class SanctionLetterController {
 		return new ResponseEntity<CustomerDetails>(HttpStatus.CREATED);
 	}
 
-	@GetMapping("/getAllGenratedSanction")
+	@GetMapping("/getAllGenratedSanctionByCm")
 	public ResponseEntity<List<CustomerDetails>> getAllGenratedSanction() {
 
 		List<CustomerDetails> genratedSanction = sls.getAllGenratedSanction();
 
 		return new ResponseEntity<List<CustomerDetails>>(genratedSanction, HttpStatus.OK);
+	}
+	
+	
+	@PutMapping("/customerApplicationStatusSanctioned/{customerId}/{customerStatus}")
+	public ResponseEntity<CustomerDetails> changeCustomerApplicationStatusSanctioned(@PathVariable("customerId") Integer customerId, @PathVariable("customerStatus") String customerStatus)
+	{
+		
+		System.out.println(customerId+" "+customerStatus);
+		CustomerDetails customerDetails = sls.changeCustomerFormStatusSanctioned(customerId, customerStatus);
+
+		if (customerDetails != null) {
+			return new ResponseEntity<CustomerDetails>(customerDetails, HttpStatus.OK);
+		} else {
+			return new ResponseEntity<CustomerDetails>(HttpStatus.NO_CONTENT);
+
+		}
 	}
 
 }
