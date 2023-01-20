@@ -29,10 +29,12 @@ import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import com.shreeganesh.loan.app.customerEntities.CustomerDetails;
+import com.shreeganesh.loan.app.customerEntities.Enquiry;
 import com.shreeganesh.loan.app.customerEntities.LoanDisbursement;
 import com.shreeganesh.loan.app.customerEntities.SanctionLetter;
 import com.shreeganesh.loan.app.customerEnum.CustomerStatus;
 import com.shreeganesh.loan.app.customerRepository.CustomerRepository;
+import com.shreeganesh.loan.app.customerRepository.EnquiryRepository;
 import com.shreeganesh.loan.app.customerRepository.SanctionLetterRepository;
 import com.shreeganesh.loan.app.customerServiceInterfaces.SanctionLetterService;
 
@@ -50,6 +52,9 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 
 	@Autowired
 	JavaMailSender sender;
+	
+	@Autowired
+	EnquiryRepository enquiryRepository;
 
 	@Value("${spring.mail.username}") // @Value is used for binding property to variable....
 	private String fromEmail;
@@ -64,6 +69,12 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 		customerDetails.getCustomerSanctionLetter()
 				.setSactionStatus(String.valueOf(CustomerStatus.SanctionLetterGenreted));
 		customerDetails.getCustomerSanctionLetter().setTermsCondition("Ok");
+		
+		Optional<Enquiry> optional = enquiryRepository.findById(customerDetails.getCustomerId());
+		if(optional!=null) {
+			Enquiry enquiry = optional.get();
+			enquiry.setEnquiryStatus(String.valueOf(CustomerStatus.SanctionLetterGenreted));
+		}
 
 		logger.info("Loan Disbursement PDF started");
 		String title = "Shree Ganesh Finace";
