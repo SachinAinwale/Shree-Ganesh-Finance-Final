@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,7 @@ public class SanctionLetter {
 	private Double totalLoanAmountWithInterest;
 	// @Enumerated
 	private String sactionStatus;
+	@Lob
 	private byte[] sactionLetter;
 }
 

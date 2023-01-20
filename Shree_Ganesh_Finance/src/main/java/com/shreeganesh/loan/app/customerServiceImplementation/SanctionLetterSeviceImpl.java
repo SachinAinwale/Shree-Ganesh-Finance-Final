@@ -100,7 +100,6 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 
 		Document document = new Document();
 
-		PdfWriter.getInstance(document, opt);
 		document.open();
 
 		Font titlefont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25);
@@ -190,12 +189,14 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 					+ "\n" + "Thank you for your interest in our services.";
 
 			mimemessageHelper.setText(text);
+
+			PdfWriter.getInstance(document, opt);
 			byte[] bytearray = byt.readAllBytes();
 
 			mimemessageHelper.addAttachment("loanSanctionLetter.pdf", new ByteArrayResource(bytearray));
 			sender.send(mimemessage);
-
-			// customerDetails.getCustomerSanctionLetter().setSactionLetter(bytearray);
+			
+			 customerDetails.getCustomerSanctionLetter().setSactionLetter(bytearray);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
