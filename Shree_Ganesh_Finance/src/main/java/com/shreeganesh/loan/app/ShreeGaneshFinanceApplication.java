@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.shreeganesh.loan.app.customerEntities.AllDocuments;
 import com.shreeganesh.loan.app.customerEntities.CustomerAddress;
 import com.shreeganesh.loan.app.customerEntities.CustomerBankDetails;
@@ -35,6 +36,7 @@ public class ShreeGaneshFinanceApplication {
 			System.out.println(mapper.writeValueAsString(new SanctionLetter()));
 
 		} catch (JsonProcessingException e) {
+
 
 			e.printStackTrace();
 		}

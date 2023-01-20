@@ -1,4 +1,5 @@
 
+
 package com.shreeganesh.loan.app.customerEntities;
 
 import java.util.Date;
@@ -38,4 +39,5 @@ public class LoanDisbursement {
 
 	
 }
+
 

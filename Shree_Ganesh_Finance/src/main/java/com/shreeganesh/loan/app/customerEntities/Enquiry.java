@@ -35,4 +35,6 @@ public class Enquiry {
 	//@Enumerated
 	private String enquiryStatus;
 
+
 }
+

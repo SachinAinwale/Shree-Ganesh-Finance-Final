@@ -1,3 +1,4 @@
+
 package com.shreeganesh.loan.app.customerEntities;
 
 import javax.persistence.CascadeType;
@@ -27,4 +28,5 @@ public class Dealer {
 	private DealerBankDetails dealerBankDetails;
 
 }
+
 

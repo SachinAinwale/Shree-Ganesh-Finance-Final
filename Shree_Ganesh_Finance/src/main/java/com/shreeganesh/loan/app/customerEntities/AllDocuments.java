@@ -1,4 +1,5 @@
 
+
 package com.shreeganesh.loan.app.customerEntities;
 
 import javax.persistence.Entity;
@@ -42,3 +43,4 @@ public class AllDocuments {
    private byte[] drivingLicense;
 
 }
+

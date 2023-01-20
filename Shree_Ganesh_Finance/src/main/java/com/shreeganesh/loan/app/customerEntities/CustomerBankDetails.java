@@ -24,3 +24,4 @@ public class CustomerBankDetails {
 	private String customerBankBranchName;
 	private String customerBankIfscNo;
 }
+
