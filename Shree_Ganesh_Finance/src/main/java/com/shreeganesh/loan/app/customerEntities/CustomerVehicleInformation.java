@@ -24,4 +24,3 @@ public class CustomerVehicleInformation {
 	private String customerVehicleRcNo;
 
 }
-

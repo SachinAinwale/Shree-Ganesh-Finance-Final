@@ -53,5 +53,6 @@ public class CustomerDetails {
 	private CustomerVehicleInformation customerVehicleInformation;
 	@OneToOne (cascade = CascadeType.ALL)
 	private CustomerBankDetails customerBankDetails;
+
 }
 

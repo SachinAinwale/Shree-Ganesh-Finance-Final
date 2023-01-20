@@ -81,4 +81,20 @@ public class CustomerServiceImpl implements CustomerService {
 
 	}
 
+	@Override
+	public List<CustomerDetails> getAllDocVerifiedCustomer() 
+	{
+		List<CustomerDetails> verifedCustomer = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentVerificationOk));
+		
+		return verifedCustomer;
+	}
+
+	@Override
+	public List<CustomerDetails> getAllDocRejectedCustomer() 
+	{
+		List<CustomerDetails> rejectedCustomer = customerRepository.findAllByCustomerStatus(String.valueOf(CustomerStatus.DocumentRejected));
+		
+		return rejectedCustomer;
+	}
+
 }

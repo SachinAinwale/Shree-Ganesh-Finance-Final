@@ -27,5 +27,6 @@ public class CustomerProfession {
 	 private String professionDesignation;
 	 
 
+
 }
 

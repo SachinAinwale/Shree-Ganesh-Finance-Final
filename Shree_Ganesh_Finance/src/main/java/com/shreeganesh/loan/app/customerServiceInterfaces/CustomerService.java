@@ -14,4 +14,8 @@ public interface CustomerService {
 
 	public CustomerDetails changeCustomerFormStatus(Integer customerId, String customerStatus);
 
+	public List<CustomerDetails> getAllDocVerifiedCustomer();
+
+	public List<CustomerDetails> getAllDocRejectedCustomer();
+
 }

@@ -27,6 +27,7 @@ public class ShreeGaneshFinanceApplication {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ShreeGaneshFinanceApplication.class, args);
+
 		System.out.println("Jai GAnesh");
 
 		ObjectMapper mapper = new ObjectMapper();
@@ -40,5 +41,4 @@ public class ShreeGaneshFinanceApplication {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -8,8 +8,10 @@ import org.springframework.stereotype.Repository;
 import com.shreeganesh.loan.app.customerEntities.CustomerDetails;
 
 @Repository
-public interface CustomerRepository extends JpaRepository<CustomerDetails, Integer> {
-
+public interface CustomerRepository extends JpaRepository<CustomerDetails, Integer>
+{
 	public List<CustomerDetails> findAllByCustomerStatus(String valueOf);
+
+	
 
 }
