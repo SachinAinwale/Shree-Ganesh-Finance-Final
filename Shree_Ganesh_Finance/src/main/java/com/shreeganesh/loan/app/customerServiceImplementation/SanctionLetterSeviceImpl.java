@@ -77,6 +77,7 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 		}
 
 		logger.info("Loan Disbursement PDF started");
+		Document document = new Document();
 		String title = "Shree Ganesh Finace";
 
 		String content1 = "\n\n Dear" + customerDetails.getCustomerFirstName() + customerDetails.getCustomerLastName()
@@ -97,10 +98,11 @@ String content2 = "\n\nWe hope that you find the terms and conditions of this lo
 				+ "\n\nSincerely,\n\n" + "Ashutosh m. Bhoyar (Credit manager)";
 
 		ByteArrayOutputStream opt = new ByteArrayOutputStream();
-
-		Document document = new Document();
-
 		PdfWriter.getInstance(document, opt);
+
+		
+
+		
 		document.open();
 
 		Font titlefont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25);
@@ -172,7 +174,8 @@ String content2 = "\n\nWe hope that you find the terms and conditions of this lo
 		
 		document.close();
 		ByteArrayInputStream byt = new ByteArrayInputStream(opt.toByteArray());
-
+         byte[] bytes=byt.readAllBytes();
+         customerDetails.getCustomerSanctionLetter().setSactionLetter(bytes);
 		MimeMessage mimemessage = sender.createMimeMessage();
 
 		try {
@@ -192,6 +195,8 @@ String content2 = "\n\nWe hope that you find the terms and conditions of this lo
 
 			mimemessageHelper.setText(text);
 			byte[] bytearray = byt.readAllBytes();
+			
+			
 
 			mimemessageHelper.addAttachment("loanSanctionLetter.pdf", new ByteArrayResource(bytearray));
 			sender.send(mimemessage);
