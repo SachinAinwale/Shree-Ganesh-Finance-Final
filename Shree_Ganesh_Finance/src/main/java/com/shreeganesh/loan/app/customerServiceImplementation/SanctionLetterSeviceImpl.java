@@ -75,7 +75,7 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 			enquiry.setEnquiryStatus(String.valueOf(CustomerStatus.SanctionLetterGenreted));
 		}
 
-		logger.info("Loan Disbursement PDF started");
+		logger.info("Loan Sanction PDF started");
 		Document document = new Document();
 		String title = "Shree Ganesh Finace";
 

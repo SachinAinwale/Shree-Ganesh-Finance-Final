@@ -6,6 +6,6 @@ import com.shreeganesh.loan.app.customerEntities.LoanDisbursement;
 
 public interface LoanDisbursementService {
 
-	public LoanDisbursement insertData(CustomerDetails customer);
+	public CustomerDetails insertData(Integer customerid);
 
 }

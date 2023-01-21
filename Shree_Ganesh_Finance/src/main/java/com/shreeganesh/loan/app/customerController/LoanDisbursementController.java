@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,10 +22,10 @@ public class LoanDisbursementController {
 	@Autowired
 	LoanDisbursementService loandisbursementService;
 
-	@PostMapping("/insert")
-	public ResponseEntity<LoanDisbursement> insertData(@RequestBody CustomerDetails customer) {
+	@PostMapping("/loandisbursementbyAH/{customerid}")
+	public ResponseEntity<CustomerDetails> insertData(@PathVariable ("customerid")  Integer customerid) {
 
-		LoanDisbursement data = loandisbursementService.insertData(customer);
-		return new ResponseEntity<LoanDisbursement>(data, HttpStatus.CREATED);
+	  CustomerDetails insertData = loandisbursementService.insertData(customerid);
+		return new ResponseEntity<CustomerDetails>(insertData, HttpStatus.CREATED);
 	}
 }
