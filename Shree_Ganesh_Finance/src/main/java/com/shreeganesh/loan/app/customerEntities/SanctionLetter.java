@@ -3,8 +3,8 @@ package com.shreeganesh.loan.app.customerEntities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,6 +36,8 @@ public class SanctionLetter {
 	private Double totalLoanAmountWithInterest;
 	// @Enumerated
 	private String sactionStatus;
+
+	@Column(length = 1000000)
 	@Lob
 	private byte[] sactionLetter;
 }

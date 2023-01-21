@@ -61,4 +61,13 @@ public class SanctionLetterController {
 		}
 	}
 
+	@GetMapping("/getAllSanctionLetterSignByCustomer")
+	public ResponseEntity<List<CustomerDetails>> getAllSanctionLetterSignByCustomer() {
+
+		List<CustomerDetails> signByCustomer = sls.getAllSanctionLetterSignByCustomer();
+
+		return new ResponseEntity<List<CustomerDetails>>(signByCustomer, HttpStatus.OK);
+
+	}
+
 }

@@ -76,6 +76,7 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 		}
 
 		logger.info("Loan Disbursement PDF started");
+		Document document = new Document();
 		String title = "Shree Ganesh Finace";
 
 		String content1 = "\n\n Dear" + customerDetails.getCustomerFirstName() + customerDetails.getCustomerLastName()
@@ -98,8 +99,11 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 
 		ByteArrayOutputStream opt = new ByteArrayOutputStream();
 
-		Document document = new Document();
+		PdfWriter.getInstance(document, opt);
 
+		
+
+		
 		document.open();
 
 		Font titlefont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25);
@@ -170,7 +174,8 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 
 		document.close();
 		ByteArrayInputStream byt = new ByteArrayInputStream(opt.toByteArray());
-
+         byte[] bytes=byt.readAllBytes();
+         customerDetails.getCustomerSanctionLetter().setSactionLetter(bytes);
 		MimeMessage mimemessage = sender.createMimeMessage();
 
 		try {
@@ -192,6 +197,8 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 
 			PdfWriter.getInstance(document, opt);
 			byte[] bytearray = byt.readAllBytes();
+			
+			
 
 			mimemessageHelper.addAttachment("loanSanctionLetter.pdf", new ByteArrayResource(bytearray));
 			sender.send(mimemessage);
@@ -246,5 +253,14 @@ public class SanctionLetterSeviceImpl implements SanctionLetterService {
 		
 		return sanrepo.findAllByCustomerStatus(String.valueOf(CustomerStatus.SanctionLetterApproved));
 	}
+
+	@Override
+	public List<CustomerDetails> getAllSanctionLetterSignByCustomer() {
+		
+		return sanrepo.findAllByCustomerStatus(String.valueOf(CustomerStatus.SanctionLetterSignByCustomer));
+		
+	}
+
+
 
 }

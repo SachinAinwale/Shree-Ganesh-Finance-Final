@@ -1,4 +1,5 @@
 
+
 package com.shreeganesh.loan.app.customerEntities;
 
 import javax.persistence.Entity;
@@ -26,4 +27,6 @@ public class CustomerProfession {
 	 private String professionDesignation;
 	 
 
+
 }
+

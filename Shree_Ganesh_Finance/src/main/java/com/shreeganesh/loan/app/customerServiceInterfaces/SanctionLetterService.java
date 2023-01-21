@@ -18,5 +18,9 @@ public interface SanctionLetterService {
 
 	public CustomerDetails changeCustomerFormStatusSanctioned(Integer customerId, String customerStatus);
 
+	public List<CustomerDetails> getAllSanctionLetterSignByCustomer();
+
+
+
 
 }
