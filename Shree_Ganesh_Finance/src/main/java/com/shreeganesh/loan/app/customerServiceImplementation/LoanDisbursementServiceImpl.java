@@ -1,6 +1,7 @@
 package com.shreeganesh.loan.app.customerServiceImplementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -38,6 +39,9 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
 
 	@Autowired
 	LoanDisbursement loan;
+	
+	@Value("${spring.mail.username}") // @Value is used for binding property to variable....
+	private String fromEmail;
 
 	@Autowired
 	CustomerRepository customerRepository;
@@ -45,6 +49,7 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
 	@Autowired
 	JavaMailSender sender;
 	
+
 	@Autowired
 	EnquiryRepository enquiryRepository;
 
@@ -72,8 +77,8 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
 			customer.setCustomerStatus(String.valueOf(CustomerStatus.loandisbursed));
 			customer.getCustomerloandisbursement().setAmountPaidDate(date);
 
-			customerRepository.save(customer);
 			
+
 			Optional<Enquiry> optional1 = enquiryRepository.findById(customer.getCustomerId());
 			if (optional.isPresent()) {
 				Enquiry enquiry = optional1.get();
@@ -82,67 +87,68 @@ public class LoanDisbursementServiceImpl implements LoanDisbursementService {
 
 			}
 
+			logger.info("Loan Disbursement PDF started");
 
-//			logger.info("Loan Disbursement PDF started");
-//
-//			String title = "Shree Ganesh Finace";
-//			String content1 = "mr" + customer.getCustomerDealer().getDealerName();
-//			String content2 = "as per your vehicle quatation provided to" + customer.getCustomerFirstName() + " "
-//					+ customer.getCustomerLastName() + "And further application aproved loan amount "
-//					+ customer.getCustomerSanctionLetter().getLoanAmountSanctioned()
-//					+ "is sanctiond by shree ganeh finace and amount is tranfer to your account"
-//					+ customer.getCustomerDealer().getDealerBankDetails();
-//			String content3 = "Thanks for chossing shree Ganesh Finace, hope your expiriance is pleasant";
-//
-//			ByteArrayOutputStream opt = new ByteArrayOutputStream();
-//
-//			Document document = new Document();
-//
-//			PdfWriter.getInstance(document, opt);
-//			document.open();
-//
-//			Font titlefont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25);
-//			Paragraph titlepara = new Paragraph(title, titlefont);
-//
-//			titlepara.setAlignment(Element.ALIGN_CENTER);
-//			document.add(titlepara);
-//
-//			Paragraph paracontent1 = new Paragraph(content1);
-//			document.add(paracontent1);
-//
-//			Paragraph paracontent2 = new Paragraph(content2);
-//			document.add(paracontent2);
-//
-//			Paragraph paracontent3 = new Paragraph(content3);
-//			document.add(paracontent3);
-//
-//			document.close();
-//			ByteArrayInputStream byt = new ByteArrayInputStream(opt.toByteArray());
-//
-//			MimeMessage mimemessage = sender.createMimeMessage();
-//
-//			try {
-//				MimeMessageHelper mimemessageHelper = new MimeMessageHelper(mimemessage, true);
-//				mimemessageHelper.setFrom("navinash111@gmail.com");
-//				mimemessageHelper.setTo(customer.getCustomerDealer().getDealerEmail());
-//				mimemessageHelper.setSubject("Shree Ganesh Finance regarding to Car loan");
-//				mimemessageHelper.setText(
-//						"Dear Dealer, We have recived sanction letter & happy to let you that we will get sanction amount");
-//				byte[] bytearray = byt.readAllBytes();
-//
-//				mimemessageHelper.addAttachment("loanDisbursmentletter.pdf", new ByteArrayResource(bytearray));
-//				sender.send(mimemessage);
-//
-//			} catch (Exception e) {
-//				
-//				e.printStackTrace();
-//			}
+			String title = "Shree Ganesh Finace";
+			String title2 = "\nLoan Disbursement Letter";
+			String content1 = "Dear , " + customer.getCustomerFirstName()+" "+customer.getCustomerLastName()
+					+ " This letter is to inform you that we have successfully disbursed the loan funds for your car loan. "
+					+ "The loan amount of " + customer.getCustomerSanctionLetter().getLoanAmountSanctioned()
+					+ " has been transferred to the dealer's account and the car is ready "
+					+ "for delivery.\n\nWe are pleased to have been able to provide you with the financing you needed to purchase the car of your dreams. "
+					+ "We hope that you are satisfied with our service and that you enjoy driving your new car."
+					+ "\n\nThanks for chossing shree Ganesh Finace, hope your expiriance is pleasant.\n\nSincerely,\nShree Ganesh Finace";
+
+			ByteArrayOutputStream opt = new ByteArrayOutputStream();
+			
+			Document document = new Document();
+			PdfWriter.getInstance(document, opt);
+			
+			document.open();
+
+			Font font1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 25);
+			Paragraph titlepara = new Paragraph(title, font1);
+			Paragraph titlepara2 = new Paragraph(title2, font1);
+			
+			titlepara.setAlignment(Element.ALIGN_CENTER);
+			titlepara2.setAlignment(Element.ALIGN_CENTER);
+			
+			document.add(titlepara);
+			document.add(titlepara2);
+
+			Paragraph paracontent1 = new Paragraph(content1);
+			document.add(paracontent1);
+
+			document.close();
+			
+			ByteArrayInputStream byt = new ByteArrayInputStream(opt.toByteArray());
+
+			MimeMessage mimemessage = sender.createMimeMessage();
+
+			try {
+				MimeMessageHelper mimemessageHelper = new MimeMessageHelper(mimemessage, true);
+				mimemessageHelper.setFrom(fromEmail);
+				mimemessageHelper.setTo(customer.getCustomerEmail());
+				mimemessageHelper.setSubject("Shree Ganesh Finance regarding to Car loan");
+				mimemessageHelper.setText(
+						"\n\nDear Dealer, \n\nWe have recived sanction letter & happy to let you that we will get sanction amount");
+				byte[] bytearray = byt.readAllBytes();
+				customer.getCustomerloandisbursement().setLoanDisbursementLetter(bytearray);
+				customerRepository.save(customer);
+
+				mimemessageHelper.addAttachment("loanDisbursmentletter.pdf", new ByteArrayResource(bytearray));
+				sender.send(mimemessage);
+
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
 			return customer;
-		}
-		else {
+		} else {
 			return null;
 		}
-		
+
 	}
 
 }
+
